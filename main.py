@@ -7,14 +7,14 @@ MIN_BET = 1
 ROWS = 3
 COLS = 3
 
-symbol_count = {
+symbol_count = {                                                # Possible amount of symbols in the game
     "A": 2,
     "B": 4,
     "C": 6,
     "D": 8
 }
 
-symbol_values = {
+symbol_values = {                                               # Symbols multiplier amount
     "A": 5,
     "B": 4,
     "C": 3,
