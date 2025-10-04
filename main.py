@@ -39,7 +39,7 @@ def check_winnings(columns, lines, bet, values):                # Function to ch
 
 
 
-def get_slot_machine_spin(rows, cols, symbols):
+def get_slot_machine_spin(rows, cols, symbols):         # Slot machine spin logic
     all_symbols = []
     for symbol, symbol_count in symbols.items():        # Loop thru the dictionaries key and values
         for _ in range(symbol_count):                   # Iterate n times for the symbol count/ A->2->iterate 2 times
@@ -71,7 +71,7 @@ def print_slot_machine(columns):                        # Transpose the columns
 
 
 
-def deposit():
+def deposit():                                          # Get deposit amount
     while True:
         user_deposit = input("What would you like to deposit? $") # Get the user deposit amount
         if user_deposit.isdigit():
@@ -86,7 +86,7 @@ def deposit():
     return user_deposit
 
 
-def get_number_of_lines():
+def get_number_of_lines():                              # Get lines number
     while True:
         number_of_lines = input(f"Enter the number of lines to bet on (1 - {MAX_LINES}): ")
         if number_of_lines.isdigit():
@@ -101,7 +101,7 @@ def get_number_of_lines():
     return number_of_lines
 
 
-def get_bet_amount():
+def get_bet_amount():                                   # Get the bet amount for each line given
     while True:
         bet_amount = input(f"Enter the amount you want to bet on each line (${MIN_BET} - ${MAX_BET}): $")
         if bet_amount.isdigit():
@@ -116,8 +116,7 @@ def get_bet_amount():
     return bet_amount
 
 
-def main():
-    balance = deposit()
+def current_spin(balance):                              # Game logic for the current spin
     lines = get_number_of_lines()
     while True:
         bet = get_bet_amount()
@@ -135,5 +134,18 @@ def main():
     winnings, winning_lines = check_winnings(slots, lines, bet, symbol_values)
     print(f"You won ${winnings}.")
     print(f"You won on lines:", *winning_lines)
+    return winnings - total_bet
 
+
+def main():                                             # Main func
+    balance = deposit()
+    while True:                                         # Game loop
+        print(f"Current balance is ${balance}")
+        spin = input("Press enter to play (q to quit). ")
+        if spin == "q":
+            break
+        balance += current_spin(balance)
+
+    print(f"You left with ${balance}")
+    
 main()
