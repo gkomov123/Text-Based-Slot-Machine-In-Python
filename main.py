@@ -14,6 +14,28 @@ symbol_count = {
     "D": 8
 }
 
+symbol_values = {
+    "A": 5,
+    "B": 4,
+    "C": 3,
+    "D": 2
+}
+
+
+def check_winnings(columns, lines, bet, values):                # Function to check if a row is winning
+    winnings = 0
+    for line in range(lines):
+        symbol = columns[0][line]                               # Sets the symbol to the first symbol in the column and the current line
+        for column in columns:
+            symbol_to_check = column[line]                      # Sets the winning symbol to be the first one in the row
+            if symbol != symbol_to_check:                       # if all symbols are not the same its not a winning line
+                break
+        else:                                                   
+            winnings += values[symbol] * bet                    # Calculate the winnings 
+
+    return winnings
+
+
 
 def get_slot_machine_spin(rows, cols, symbols):
     all_symbols = []
