@@ -39,9 +39,11 @@ def print_slot_machine(columns):                        # Transpose the columns
     for row in range(len(columns[0])):                  #Loop thru the lenght of the columns thus making rows
         for i, column in enumerate(columns):            # loop and enumerate thru every column
             if i != len(columns) - 1:                   # Cheks if its the last item
-                print(column[row], end=" | ")                 # Prints every first item on the column thus making a row
+                print(column[row], end=" | ")           # Prints every first item on the column thus making a row
             else:
-                print(column[row], end="")                      # Prints without "|" if its the last item
+                print(column[row], end="")              # Prints without "|" if its the last item
+            
+        print()                                         # Prints a new line for the next row
 
 
 
